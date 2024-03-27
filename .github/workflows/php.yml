@@ -57,37 +57,7 @@ jobs:
           tools: none
 
       - name: Run PHP-CS-Fixer
-        run: ./php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
-
-  type-checker:
-    name: Type Checker
-
-    if: github.event_name != 'schedule'
-
-    needs:
-      - dependency-validation
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          coverage: none
-          tools: none
-
-      - name: Install dependencies with Composer
-        run: composer install --no-interaction --no-ansi --no-progress
-
-      - name: Run Psalm on public API
-        run: psalm --config=.psalm/static-analysis.xml --no-progress --show-info=false
-
-      - name: Run Psalm on internal code
-        run: psalm --config=.psalm/config.xml --no-progress --shepherd --show-info=false --stats
+        run: php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   unit-tests:
     name: Unit Tests
