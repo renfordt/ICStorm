@@ -110,7 +110,6 @@ jobs:
         php-version:
           - "8.2"
           - "8.3"
-          - "8.4"
 
     steps:
       - name: Configure Git to avoid issues with line endings
@@ -132,7 +131,7 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: phpunit --testsuite unit
+        run: php ./phpunit --testsuite unit
 
   end-to-end-tests:
     name: End-to-End Tests
@@ -155,7 +154,6 @@ jobs:
         php-version:
           - "8.2"
           - "8.3"
-          - "8.4"
 
     steps:
       - name: Configure Git to avoid issues with line endings
@@ -175,7 +173,7 @@ jobs:
           tools: none
 
       - name: Install dependencies with Composer
-        run: php ./composer install --no-ansi --no-interaction --no-progress
+        run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
         run: php ./phpunit --testsuite end-to-end
