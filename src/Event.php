@@ -10,7 +10,7 @@ class Event
     private string $endDate;
     private string $title;
     private string $summary;
-    private EventClass $class = EventClass::Private;
+    private EventClassification $class = EventClassification::Private;
     private EventTransparency $transparency = EventTransparency::Opaque;
 
 
@@ -82,12 +82,12 @@ class Event
         $this->summary = $summary;
     }
 
-    public function getClass(): EventClass
+    public function getClassification(): EventClassification
     {
         return $this->class;
     }
 
-    public function setClass(EventClass $class): void
+    public function setClass(EventClassification $class): void
     {
         $this->class = $class;
     }
