@@ -57,7 +57,7 @@ jobs:
           tools: none
 
       - name: Run PHP-CS-Fixer
-        run: ./tools/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
+        run: ./php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   type-checker:
     name: Type Checker
@@ -77,7 +77,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-          extensions: none, ctype, curl, date, dom, json, libxml, mbstring, phar, simplexml, soap, tokenizer, xml, xmlwriter, zlib
           coverage: none
           tools: none
 
@@ -99,7 +98,6 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     env:
-      PHP_EXTENSIONS: none, ctype, curl, dom, json, libxml, mbstring, openssl, phar, soap, tokenizer, xml, xmlwriter
       PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
 
     strategy:
@@ -131,10 +129,10 @@ jobs:
           tools: none
 
       - name: Install dependencies with Composer
-        run: php ./composer install --no-ansi --no-interaction --no-progress
+        run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: php ./phpunit --testsuite unit
+        run: phpunit --testsuite unit
 
   end-to-end-tests:
     name: End-to-End Tests
@@ -145,7 +143,6 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     env:
-      PHP_EXTENSIONS: none, ctype, curl, dom, json, libxml, mbstring, openssl, phar, soap, tokenizer, xml, xmlwriter
       PHP_INI_VALUES: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
 
     strategy:
@@ -202,7 +199,6 @@ jobs:
         with:
           php-version: 8.2
           coverage: pcov
-          extensions: none, ctype, curl, dom, json, libxml, mbstring, phar, soap, tokenizer, xml, xmlwriter
           ini-values: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
           tools: none
 
