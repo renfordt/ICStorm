@@ -2,6 +2,7 @@
 
 namespace renfordt\ICStorm;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,6 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * This class provides tests for the Event class, primarily focusing on the getDescription method.
  */
+#[CoversClass(Event::class)]
 class EventTest extends TestCase
 {
     /**
