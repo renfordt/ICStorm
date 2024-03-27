@@ -2,7 +2,7 @@
 
 namespace renfordt\ICStorm;
 
-enum EventClass: string
+enum EventClassification: string
 {
     case Public = 'PUBLIC';
     case Private = 'PRIVATE';
