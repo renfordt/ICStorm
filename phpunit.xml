@@ -15,8 +15,8 @@
         </testsuite>
     </testsuites>
 
-    <source restrictDeprecations="true" restrictNotices="true" restrictWarnings="true">
-        <include includeUncoveredFiles="true">
+    <source restrictDeprecations="true" restrictNotices="true" restrictWarnings="true" includeUncoveredFiles="true">
+        <include>
             <directory>src</directory>
         </include>
     </source>
