@@ -102,51 +102,7 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: php ./vendor/phpunit/phpunit/phpunit --testsuite unit
-
-  end-to-end-tests:
-    name: End-to-End Tests
-
-    needs:
-      - unit-tests
-
-    runs-on: ${{ matrix.os }}
-
-    env:
-      PHP_INI_VALUES: assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
-
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-
-        php-version:
-          - "8.2"
-          - "8.3"
-
-    steps:
-      - name: Configure Git to avoid issues with line endings
-        if: matrix.os == 'windows-latest'
-        run: git config --global core.autocrlf false
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install PHP with extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: ${{ env.PHP_INI_VALUES }}
-          coverage: pcov
-          tools: none
-
-      - name: Install dependencies with Composer
-        run: composer install --no-ansi --no-interaction --no-progress
-
-      - name: Run tests with PHPUnit
-        run: php ./vendor/phpunit/phpunit/phpunit --testsuite end-to-end
+        run: php ./vendor/phpunit/phpunit/phpunit --testsuite default
 
   code-coverage:
     name: Code Coverage
@@ -154,7 +110,7 @@ jobs:
     if: github.event_name != 'schedule'
 
     needs:
-      - end-to-end-tests
+      - unit-tests
 
     runs-on: ubuntu-latest
 
