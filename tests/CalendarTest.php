@@ -3,9 +3,11 @@
 namespace renfordt\ICStorm;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Calendar::class)]
+#[UsesClass(Event::class)]
 class CalendarTest extends TestCase
 {
 
