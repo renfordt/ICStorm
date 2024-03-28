@@ -22,9 +22,11 @@ class EventTransparencyTest extends TestCase
     {
         $cases = EventTransparency::cases();
         $this->assertCount(2, $cases);
-        dump($cases);
 
-        $this->assertEquals('TRANSPARENT', $cases['transparent']);
-        $this->assertEquals('OPAQUE', $cases['opaque']);
+        $this->assertInstanceOf(EventTransparency::class, $cases[0]);
+        $this->assertInstanceOf(EventTransparency::class, $cases[1]);
+
+        $this->assertEquals('TRANSPARENT', $cases[0]->value);
+        $this->assertEquals('OPAQUE', $cases[1]->value);
     }
 }
