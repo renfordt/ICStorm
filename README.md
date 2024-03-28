@@ -4,9 +4,9 @@ ___
 [![Latest Version](https://img.shields.io/packagist/v/renfordt/icstorm?label=version)](https://packagist.org/packages/renfordt/icstorm/)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/renfordt/icstorm/php)
 ![Packagist License](https://img.shields.io/packagist/l/renfordt/icstorm)
-![php workflow](https://github.com/renfordt/ICStorm/actions/workflows/php.yml/badge.svg)
-[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/renfordt/ICStorm)](https://codeclimate.com/github/renfordt/ICStorm/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/255fa9a4fa63fb620150/maintainability)](https://codeclimate.com/github/renfordt/ICStorm/maintainability)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/renfordt/ICStorm/php.yml?logo=github)
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/renfordt/ICStorm?logo=codeclimate)](https://codeclimate.com/github/renfordt/ICStorm/test_coverage)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/renfordt/ICStorm?logo=codeclimate)](https://codeclimate.com/github/renfordt/ICStorm/maintainability)
 
 ICStorm is a package for creating ICS files with one or multiple events.
 
