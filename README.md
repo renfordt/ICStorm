@@ -1,7 +1,7 @@
 # ICStorm
 ___
 [![Badge](http://img.shields.io/badge/source-renfordt/ICStorm-blue.svg)](https://github.com/renfordt/ICStorm)
-[![Latest Version](https://img.shields.io/packagist/v/renfordt/icstorm?label=version)](https://packagist.org/packages/renfordt/icstorm/)
+[![Packagist Version](https://img.shields.io/packagist/v/renfordt/icstorm?include_prereleases)](https://packagist.org/packages/renfordt/icstorm/)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/renfordt/icstorm/php)
 ![Packagist License](https://img.shields.io/packagist/l/renfordt/icstorm)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/renfordt/ICStorm/php.yml?logo=github)
