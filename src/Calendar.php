@@ -27,8 +27,8 @@ class Calendar
             $ics .= "BEGIN:VEVENT\r\n";
             $ics .= "UID:".uniqid()."\r\n";
             $ics .= "DTSTAMP:".date('Ymd\THis\Z')."\r\n";
-            $ics .= "DTSTART:".$event->getStartDate()->format('Ymd\THis\Z')."\r\n";
-            $ics .= "DTEND:".$event->getEndDate()->format('Ymd\THis\Z')."\r\n";
+            $ics .= "DTSTART:".$event->getStartDate()."\r\n";
+            $ics .= "DTEND:".$event->getEndDate()."\r\n";
             $ics .= "SUMMARY:".$event->getTitle()."\r\n";
             $ics .= "DESCRIPTION:".$event->getDescription()."\r\n";
             $ics .= "LOCATION:".$event->getLocation()."\r\n";
