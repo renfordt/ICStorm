@@ -1,9 +1,11 @@
 <?php
 
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use renfordt\ICStorm\EventTransparency;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(EventTransparency::class)]
 class EventTransparencyTest extends TestCase
 {
     public function testTransparentCase()
@@ -22,7 +24,7 @@ class EventTransparencyTest extends TestCase
         $this->assertCount(2, $cases);
         dump($cases);
 
-        $this->assertEquals('TRANSPARENT', $cases['transparent']->value);
-        $this->assertEquals('OPAQUE', $cases['opaque']->value);
+        $this->assertEquals('TRANSPARENT', $cases['transparent']);
+        $this->assertEquals('OPAQUE', $cases['opaque']);
     }
 }
