@@ -196,3 +196,52 @@ class EventTest extends TestCase
         $this->assertEquals('20240330T162315Z', $event->getEndDate());
     }
 }
+   /**
+    * Test createEvent method with all properties
+    */
+   public function testCreateEventWithAllProperties(): void
+   {
+       $details = [
+           'description' => 'Event Description',
+           'location' => 'Event Location',
+           'startDate' => '2022-01-01 00:00:00',
+           'endDate' => '2022-01-01 12:00:00',
+           'title' => 'Event Title',
+           'summary' => 'Event Summary',
+           'class' => EventClassification::public,
+           'transparency' => EventTransparency::transparent
+       ];
+
+       $event = Event::createEvent($details);
+
+       $this->assertEquals($details['description'], $event->getDescription());
+       $this->assertEquals($details['location'], $event->getLocation());
+       $this->assertEquals('20220101T000000Z', $event->getStartDate());
+       $this->assertEquals('20220101T120000Z', $event->getEndDate());
+       $this->assertEquals($details['title'], $event->getTitle());
+       $this->assertEquals($details['summary'], $event->getSummary());
+       $this->assertEquals($details['class'], $event->getClassification());
+       $this->assertEquals($details['transparency'], $event->getTransparency());
+   }
+
+   /**
+    * Test createEvent method without startDate and endDate, expects Exception
+    */
+   public function testCreateEventWithoutDates(): void
+   {
+       $this->expectException(Exception::class);
+       $this->expectExceptionMessage('startDate and endDate are required.');
+
+       $details = [
+           'description' => 'Event Description',
+           'location' => 'Event Location',
+           'title' => 'Event Title',
+           'summary' => 'Event Summary',
+           'class' => EventClassification::public,
+           'transparency' => EventTransparency::transparent
+       ];
+
+       Event::createEvent($details);
+   }
+
+}
