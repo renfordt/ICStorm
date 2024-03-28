@@ -14,11 +14,35 @@
 </div>
 
 ## Installation
+
+The recommended way to install this package is using [Composer](https://getcomposer.org/). Execute the following
+command. This will not only install
+the package but also add it to your project's composer.json file as a dependency.
+
 ```
 composer require renfordt/icstorm
 ```
 
 ## Usage
+
+### Create Events
+
+The PHP code below is used to create a new event.
+
+The variables at the
+beginning (`title`, `summary`, `description`, `startDate`, `endDate`, `classification`, `transparency`, and `location`)
+represent different details of the event:
+
+- `title`: The title of the event.
+- `summary`: A brief overview of the event.
+- `description`: Detailed information about the event.
+- `startDate` and `endDate`: The start and end dates of the event and are mandatory.
+- `classification`: The visibility of the event, indicating whether it's private or public.
+- `transparency`: Indicates whether the time of the event is blocked or free.
+- `location`: Location of the event.
+
+These details are collected together into an associative array using the `compact` function. This array is then passed
+as an argument to the `Event::createEvent` function, which generates an instance of an event with these details.
 
 ```php
 $title = 'Test Event';
@@ -39,7 +63,16 @@ $event = Event::createEvent(
         'classification',
         'transparency',
         'location'));
+```
 
+### Create an iCalendar
+
+To create an iCalendar/ICS file you can use the following code.
+
+First create a new Calendar instance and add all required Events to it. After that you can generate the ICS string or
+the file with the functions.
+
+```php
 $calendar = new Calendar();
 $calendar->addEvent($event);
 
