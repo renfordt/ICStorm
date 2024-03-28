@@ -176,7 +176,7 @@ jobs:
       - name: Collect code coverage with PHPUnit
         run: php ./vendor/phpunit/phpunit/phpunit --coverage-clover clover.xml
 
-      - name: Send code coverage report to Codecov.io
+      - name: Send code coverage report to CodeClimate
         uses: paambaati/codeclimate-action@v5
         env:
           CC_TEST_REPORTER_ID: 9e282ada616888f3a9fc652ee98ccb47651d1e105e9a4637a60efaf6d66fe71f
