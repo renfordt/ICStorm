@@ -171,7 +171,7 @@ jobs:
           tools: none
 
       - name: Install dependencies with Composer
-        run: ./composer install --no-ansi --no-interaction --no-progress
+        run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Collect code coverage with PHPUnit
         run: php ./vendor/phpunit/phpunit/phpunit --coverage-clover clover.xml
