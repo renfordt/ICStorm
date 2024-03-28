@@ -39,27 +39,27 @@ jobs:
 
   #coding-guidelines:
   #  name: Coding Guidelines
-#
-#    if: github.event_name != 'schedule'
-#
-#    runs-on: ubuntu-latest
-#
- #   steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Install PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: 8.2
-#          coverage: none
-#          tools: none
 
-#      - name: Composer install
-#        run: composer install
+  #    if: github.event_name != 'schedule'
 
-#      - name: Run PHP-CS-Fixer
-#        run: ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
+  #    runs-on: ubuntu-latest
+
+  #   steps:
+  #      - name: Checkout
+  #        uses: actions/checkout@v4
+  #
+  #      - name: Install PHP
+  #        uses: shivammathur/setup-php@v2
+  #        with:
+  #          php-version: 8.2
+  #          coverage: none
+  #          tools: none
+
+  #      - name: Composer install
+  #        run: composer install
+
+  #      - name: Run PHP-CS-Fixer
+  #        run: ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   unit-tests:
     name: Unit Tests
