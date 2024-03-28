@@ -41,5 +41,5 @@ $calendar = new Calendar();
 $calendar->addEvent($event);
 
 $ics = $calendar->generateICS(); // generates a ICS string
-$icsFile = $calendar->generateICSFile();
+$icsFile = $calendar->generateICSFile(); // generates a ICS file
 ```
