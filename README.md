@@ -1,11 +1,12 @@
 # ICStorm
 ___
-![php workflow](https://github.com/renfordt/ICStorm/actions/workflows/php.yml/badge.svg)
+[![Badge](http://img.shields.io/badge/source-renfordt/ICStorm-blue.svg)](https://github.com/renfordt/ICStorm)
 [![Latest Version](https://img.shields.io/packagist/v/renfordt/icstorm?label=version)](https://packagist.org/packages/renfordt/icstorm/)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/renfordt/icstorm/php)
-[![Maintainability](https://api.codeclimate.com/v1/badges/255fa9a4fa63fb620150/maintainability)](https://codeclimate.com/github/renfordt/ICStorm/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/255fa9a4fa63fb620150/test_coverage)](https://codeclimate.com/github/renfordt/ICStorm/test_coverage)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/renfordt/icstorm)
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/renfordt/ICStorm)](https://codeclimate.com/github/renfordt/ICStorm/test_coverage)
+![php workflow](https://github.com/renfordt/ICStorm/actions/workflows/php.yml/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/255fa9a4fa63fb620150/maintainability)](https://codeclimate.com/github/renfordt/ICStorm/maintainability)
 
 ICStorm is a package for creating ICS files with one or multiple events.
 
