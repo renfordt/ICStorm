@@ -6,11 +6,23 @@ class Calendar
 {
     protected array $events;
 
+    /**
+     * Adds an event to the calendar.
+     *
+     * @param  Event  $event  The event to be added.
+     * @return void
+     */
     public function addEvent(Event $event): void
     {
         $this->events[] = $event;
     }
 
+    /**
+     * Generates an ICS file and saves it to the specified file
+     *
+     * @param  string  $file  The name of the ICS file to be generated. Default is 'calendar.ics'
+     * @return string The name of the generated ICS file
+     */
     public function generateICSFile(string $file = 'calendar.ics'): string
     {
         $ics = $this->generateICS();
@@ -18,6 +30,11 @@ class Calendar
         return $file;
     }
 
+    /**
+     * Generates an iCalendar in string format.
+     *
+     * @return string The generated iCalendar string.
+     */
     public function generateICS(): string
     {
         $ics = "BEGIN:VCALENDAR\r\n";
