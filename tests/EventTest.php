@@ -2,6 +2,7 @@
 
 namespace renfordt\ICStorm;
 
+use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -195,7 +196,7 @@ class EventTest extends TestCase
         $event->setEndDate($endDate);
         $this->assertEquals('20240330T162315Z', $event->getEndDate());
     }
-}
+
    /**
     * Test createEvent method with all properties
     */
