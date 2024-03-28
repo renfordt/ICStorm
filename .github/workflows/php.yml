@@ -56,8 +56,11 @@ jobs:
           coverage: none
           tools: none
 
+      - name: Composer install
+        run: composer install
+
       - name: Run PHP-CS-Fixer
-        run: php vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
+        run: ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   unit-tests:
     name: Unit Tests
@@ -101,7 +104,7 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: php .vendor/phpunit/phpunit/phpunit --testsuite unit
+        run: php ./vendor/phpunit/phpunit/phpunit --testsuite unit
 
   end-to-end-tests:
     name: End-to-End Tests
