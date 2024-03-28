@@ -32,8 +32,8 @@ class Calendar
             $ics .= "SUMMARY:".$event->getTitle()."\r\n";
             $ics .= "DESCRIPTION:".$event->getDescription()."\r\n";
             $ics .= "LOCATION:".$event->getLocation()."\r\n";
-            $ics .= "CLASS:".$event->getClassification()."\r\n";
-            $ics .= "TRANSP:".$event->getTransparency()."\r\n";
+            $ics .= "CLASS:".$event->getClassification()->value()."\r\n";
+            $ics .= "TRANSP:".$event->getTransparency()->value()."\r\n";
             $ics .= "END:VEVENT\r\n";
         }
         $ics .= "END:VCALENDAR\r\n";
