@@ -108,7 +108,7 @@ class EventTest extends TestCase
     public function testGetClassificationDefault(): void
     {
         $event = new Event();
-        $classification = EventClassification::Private;
+        $classification = EventClassification::private;
         $this->assertEquals($classification, $event->getClassification());
     }
 
@@ -118,7 +118,7 @@ class EventTest extends TestCase
     public function testGetClassificationPublic(): void
     {
         $event = new Event();
-        $classification = EventClassification::Public;
+        $classification = EventClassification::public;
         $event->setClass($classification);
         $this->assertEquals($classification, $event->getClassification());
     }
@@ -129,7 +129,7 @@ class EventTest extends TestCase
     public function testGetClassificationConfidential(): void
     {
         $event = new Event();
-        $classification = EventClassification::Confidential;
+        $classification = EventClassification::confidential;
         $event->setClass($classification);
         $this->assertEquals($classification, $event->getClassification());
     }
@@ -140,7 +140,7 @@ class EventTest extends TestCase
     public function testGetTransparencyDefault(): void
     {
         $event = new Event();
-        $transparency = EventTransparency::Opaque;
+        $transparency = EventTransparency::opaque;
         $this->assertEquals($transparency, $event->getTransparency());
     }
 
@@ -150,7 +150,7 @@ class EventTest extends TestCase
     public function testGetTransparencyTransparent(): void
     {
         $event = new Event();
-        $transparency = EventTransparency::Transparent;
+        $transparency = EventTransparency::transparent;
         $event->setTransparency($transparency);
         $this->assertEquals($transparency, $event->getTransparency());
     }

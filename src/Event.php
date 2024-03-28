@@ -10,8 +10,8 @@ class Event
     private \DateTime $endDate;
     private string $title;
     private string $summary;
-    private EventClassification $class = EventClassification::Private;
-    private EventTransparency $transparency = EventTransparency::Opaque;
+    private EventClassification $class = EventClassification::private;
+    private EventTransparency $transparency = EventTransparency::opaque;
 
 
     private string $conference;
