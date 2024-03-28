@@ -2,6 +2,8 @@
 
 namespace renfordt\ICStorm;
 
+use Exception;
+
 class Event
 {
     private string $description;
@@ -12,14 +14,40 @@ class Event
     private string $summary;
     private EventClassification $class = EventClassification::private;
     private EventTransparency $transparency = EventTransparency::opaque;
-
-
     private string $conference;
 
-
-    public function setDetails(array $details): void
+    /**
+     * Creates a new Event object with the given details.
+     *
+     * @param  array  $details  The details for the event.
+     * @return Event The created Event object.
+     * @throws Exception If the 'startDate' or 'endDate' is not provided in the details array.
+     */
+    public static function createEvent(array $details): Event
     {
+        if (!isset($details['startDate']) || !isset($details['endDate'])) {
+            throw new Exception('startDate and endDate are required.');
+        }
 
+        $event = new Event();
+        $event->setStartDate($details['startDate']);
+        $event->setEndDate($details['endDate']);
+
+        unset($details['startDate'], $details['endDate']); // These have already been set
+
+        foreach ($details as $property => $value) {
+            $event->setPropertyIfExists($details, $property);
+        }
+
+        return $event;
+    }
+
+    private function setPropertyIfExists(array $details, string $property): void
+    {
+        $methodName = 'set' . ucfirst($property);
+        if (isset($details[$property]) && method_exists($this, $methodName)) {
+            $this->$methodName($details[$property]);
+        }
     }
 
     public function getDescription(): string
@@ -49,7 +77,7 @@ class Event
 
     public function setStartDate(\DateTime|string $startDate): void
     {
-        if(is_string($startDate)) {
+        if (is_string($startDate)) {
             $startDate = new \DateTime($startDate);
         }
         $this->startDate = $startDate;
@@ -62,7 +90,7 @@ class Event
 
     public function setEndDate(\DateTime|string $endDate): void
     {
-        if(is_string($endDate)) {
+        if (is_string($endDate)) {
             $endDate = new \DateTime($endDate);
         }
         $this->endDate = $endDate;
