@@ -155,4 +155,44 @@ class EventTest extends TestCase
         $this->assertEquals($transparency, $event->getTransparency());
     }
 
+    /**
+     * Test getStartDate method with DateTime object
+     */
+    public function testGetStartDate(): void
+    {
+        $event = new Event();
+        $startDate = new \DateTime('2022-04-01 12:00:00');
+        $event->setStartDate($startDate);
+        $this->assertEquals('20220401T120000Z', $event->getStartDate());
+    }
+    /**
+     * Test getStartDate method with string
+     */
+    public function testGetStartDateWithString(): void
+    {
+        $event = new Event();
+        $startDate = '2024-03-28 14:23:15';
+        $event->setStartDate($startDate);
+        $this->assertEquals('20240328T142315Z', $event->getStartDate());
+    }
+    /**
+     * Test getEndDate method with DateTime object
+     */
+    public function testGetEndDate(): void
+    {
+        $event = new Event();
+        $endDate = new \DateTime('2022-04-02 18:00:00');
+        $event->setEndDate($endDate);
+        $this->assertEquals('20220402T180000Z', $event->getEndDate());
+    }
+    /**
+     * Test getEndDate method with string
+     */
+    public function testGetEndDateWithString(): void
+    {
+        $event = new Event();
+        $endDate = '2024-03-30 16:23:15';
+        $event->setEndDate($endDate);
+        $this->assertEquals('20240330T162315Z', $event->getEndDate());
+    }
 }
