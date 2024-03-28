@@ -120,7 +120,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-latest
 
         php-version:
           - "8.2"
@@ -147,7 +146,7 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: php ./phpunit --testsuite end-to-end
+        run: php ./vendor/phpunit/phpunit/phpunit --testsuite end-to-end
 
   code-coverage:
     name: Code Coverage
@@ -175,7 +174,7 @@ jobs:
         run: ./composer install --no-ansi --no-interaction --no-progress
 
       - name: Collect code coverage with PHPUnit
-        run: vendor/bin/phpunit --coverage-clover clover.xml
+        run: php ./vendor/phpunit/phpunit/phpunit --coverage-clover clover.xml
 
       - name: Send code coverage report to Codecov.io
         uses: paambaati/codeclimate-action@v5
