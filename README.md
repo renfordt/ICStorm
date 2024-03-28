@@ -1,8 +1,6 @@
-<h1 style="text-align: center;"> ICStorm</h1>
+<h1 align="center"> ICStorm</h1>
 
-___
-
-<div  style="text-align: center;">
+<div align="center">
 
 <strong>A package for creating and importing iCalendar/ICS files with one or multiple events.</strong>
 
