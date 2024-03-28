@@ -8,16 +8,20 @@ class EventTransparencyTest extends TestCase
 {
     public function testTransparentCase()
     {
-        $this->assertEquals('TRANSPARENT', EventTransparency::transparent);
+        $this->assertEquals('TRANSPARENT', EventTransparency::transparent->value);
     }
 
     public function testOpaqueCase()
     {
-        $this->assertEquals('OPAQUE', EventTransparency::opaque);
+        $this->assertEquals('OPAQUE', EventTransparency::opaque->value);
     }
 
     public function testCases()
     {
-        $this->assertEquals(['transparent' => 'TRANSPARENT', 'opaque' => 'OPAQUE'], EventTransparency::cases());
+        $cases = EventTransparency::cases();
+        $this->assertCount(2, $cases);
+
+        $this->assertEquals('TRANSPARENT', $cases['transparent']->value);
+        $this->assertEquals('OPAQUE', $cases['opaque']->value);
     }
 }
