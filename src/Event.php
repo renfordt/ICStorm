@@ -2,14 +2,15 @@
 
 namespace renfordt\ICStorm;
 
+use DateTime;
 use Exception;
 
 class Event
 {
     private string $description;
     private string $location;
-    private \DateTime $startDate;
-    private \DateTime $endDate;
+    private DateTime $startDate;
+    private DateTime $endDate;
     private string $title;
     private string $summary;
     private EventClassification $class = EventClassification::private;
@@ -72,13 +73,13 @@ class Event
 
     public function getStartDate(): string
     {
-        return $this->startDate->format('Ymd\THis\Z');;
+        return $this->startDate->format('Ymd\THis\Z');
     }
 
-    public function setStartDate(\DateTime|string $startDate): void
+    public function setStartDate(DateTime|string $startDate): void
     {
         if (is_string($startDate)) {
-            $startDate = new \DateTime($startDate);
+            $startDate = new DateTime($startDate);
         }
         $this->startDate = $startDate;
     }
@@ -88,10 +89,10 @@ class Event
         return $this->endDate->format('Ymd\THis\Z');
     }
 
-    public function setEndDate(\DateTime|string $endDate): void
+    public function setEndDate(DateTime|string $endDate): void
     {
         if (is_string($endDate)) {
-            $endDate = new \DateTime($endDate);
+            $endDate = new DateTime($endDate);
         }
         $this->endDate = $endDate;
     }
@@ -135,6 +136,4 @@ class Event
     {
         $this->transparency = $transparency;
     }
-
-
 }
