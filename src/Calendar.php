@@ -44,7 +44,7 @@ class Calendar
         $ics .= "PRODID:-//ICStorm//EN\r\n";
 
         foreach ($this->events as $event) {
-            $event->generateICS();
+            $ics .= $event->generateICS();
         }
         $ics .= "END:VCALENDAR\r\n";
         return $ics;
