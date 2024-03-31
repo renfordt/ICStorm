@@ -166,6 +166,7 @@ class EventTest extends TestCase
         $event->setStartDate($startDate);
         $this->assertEquals('20220401T120000Z', $event->getStartDate());
     }
+
     /**
      * Test getStartDate method with string
      */
@@ -176,6 +177,7 @@ class EventTest extends TestCase
         $event->setStartDate($startDate);
         $this->assertEquals('20240328T142315Z', $event->getStartDate());
     }
+
     /**
      * Test getEndDate method with DateTime object
      */
@@ -186,6 +188,7 @@ class EventTest extends TestCase
         $event->setEndDate($endDate);
         $this->assertEquals('20220402T180000Z', $event->getEndDate());
     }
+
     /**
      * Test getEndDate method with string
      */
@@ -197,52 +200,117 @@ class EventTest extends TestCase
         $this->assertEquals('20240330T162315Z', $event->getEndDate());
     }
 
-   /**
-    * Test createEvent method with all properties
-    */
-   public function testCreateEventWithAllProperties(): void
-   {
-       $details = [
-           'description' => 'Event Description',
-           'location' => 'Event Location',
-           'startDate' => '2022-01-01 00:00:00',
-           'endDate' => '2022-01-01 12:00:00',
-           'title' => 'Event Title',
-           'summary' => 'Event Summary',
-           'class' => EventClassification::public,
-           'transparency' => EventTransparency::transparent
-       ];
+    /**
+     * Test createEvent method with all properties
+     */
+    public function testCreateEventWithAllProperties(): void
+    {
+        $details = [
+            'description' => 'Event Description',
+            'location' => 'Event Location',
+            'startDate' => '2022-01-01 00:00:00',
+            'endDate' => '2022-01-01 12:00:00',
+            'title' => 'Event Title',
+            'summary' => 'Event Summary',
+            'class' => EventClassification::public,
+            'transparency' => EventTransparency::transparent
+        ];
 
-       $event = Event::createEvent($details);
+        $event = Event::createEvent($details);
 
-       $this->assertEquals($details['description'], $event->getDescription());
-       $this->assertEquals($details['location'], $event->getLocation());
-       $this->assertEquals('20220101T000000Z', $event->getStartDate());
-       $this->assertEquals('20220101T120000Z', $event->getEndDate());
-       $this->assertEquals($details['title'], $event->getTitle());
-       $this->assertEquals($details['summary'], $event->getSummary());
-       $this->assertEquals($details['class'], $event->getClassification());
-       $this->assertEquals($details['transparency'], $event->getTransparency());
-   }
+        $this->assertEquals($details['description'], $event->getDescription());
+        $this->assertEquals($details['location'], $event->getLocation());
+        $this->assertEquals('20220101T000000Z', $event->getStartDate());
+        $this->assertEquals('20220101T120000Z', $event->getEndDate());
+        $this->assertEquals($details['title'], $event->getTitle());
+        $this->assertEquals($details['summary'], $event->getSummary());
+        $this->assertEquals($details['class'], $event->getClassification());
+        $this->assertEquals($details['transparency'], $event->getTransparency());
+    }
 
-   /**
-    * Test createEvent method without startDate and endDate, expects Exception
-    */
-   public function testCreateEventWithoutDates(): void
-   {
-       $this->expectException(Exception::class);
-       $this->expectExceptionMessage('startDate and endDate are required.');
+    /**
+     * Test createEvent method without startDate and endDate, expects Exception
+     */
+    public function testCreateEventWithoutDates(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('startDate and endDate are required.');
 
-       $details = [
-           'description' => 'Event Description',
-           'location' => 'Event Location',
-           'title' => 'Event Title',
-           'summary' => 'Event Summary',
-           'class' => EventClassification::public,
-           'transparency' => EventTransparency::transparent
-       ];
+        $details = [
+            'description' => 'Event Description',
+            'location' => 'Event Location',
+            'title' => 'Event Title',
+            'summary' => 'Event Summary',
+            'class' => EventClassification::public,
+            'transparency' => EventTransparency::transparent
+        ];
 
-       Event::createEvent($details);
-   }
+        Event::createEvent($details);
+    }
 
+    /**
+     * Test setDate with DateTime object and string timezone
+     */
+    public function testSetDateWithDateTimeAndStringTimezone(): void
+    {
+        $event = new Event();
+        $date = new \DateTime('2022-04-01 12:00:00');
+        $timezone = 'America/New_York';
+        $event->setStartDate($date, $timezone);
+        $expectedDate = new \DateTime('2022-04-01 12:00:00', new \DateTimeZone(($timezone)));
+        $expectedDate->setTimezone(new \DateTimeZone('UTC'));
+        $this->assertEquals($expectedDate, $event->getStartDate());
+    }
+
+    /**
+     * Test setDate with string date and string timezone
+     */
+    public function testSetDateWithStringDateAndStringTimezone(): void
+    {
+        $event = new Event();
+        $date = '2022-04-01 12:00:00';
+        $timezone = 'America/New_York';
+        $event->setStartDate($date, $timezone);
+        $expectedDate = new \DateTime($date, new \DateTimeZone($timezone));
+        $expectedDate->setTimezone(new \DateTimeZone('UTC'));
+        $this->assertEquals($expectedDate, $event->getStartDate());
+    }
+
+    /**
+     * Test setDate with DateTime object and DateTimeZone object
+     */
+    public function testSetDateWithDateTimeAndDateTimeZone(): void
+    {
+        $event = new Event();
+        $date = new \DateTime('2022-04-01 12:00:00');
+        $timezone = new \DateTimeZone('America/New_York');
+        $event->setStartDate($date, $timezone);
+        $expectedDate = new \DateTime('2022-04-01 12:00:00', $timezone);
+        $expectedDate->setTimezone(new \DateTimeZone('UTC'));
+        $this->assertEquals($expectedDate, $event->getStartDate());
+    }
+
+    /**
+     * Test setDate method with invalid string date and valid string timezone
+     */
+    public function testSetDateWithInvalidStringDateAndStringTimezone(): void
+    {
+        $this->expectException(Exception::class);
+        $event = new Event();
+        $date = 'Invalid Date';
+        $timezone = 'America/New_York';
+        $event->setStartDate($date, $timezone);
+    }
+
+    /**
+     * Test setDate method with valid string date and invalid string timezone
+     */
+    public function testSetDateWithStringDateAndInvalidStringTimezone(): void
+    {
+        $this->expectException(Exception::class);
+        $event = new Event();
+        $date = '2022-04-01 12:00:00';
+        $timezone = 'Invalid Timezone';
+        $event->setStartDate($date, $timezone);
+    }
 }
