@@ -264,7 +264,7 @@ class Event
             $date = new DateTime($date, $timezone);
         }
         if ($date instanceof DateTime) {
-                $date = new DateTime($date->format('Y-m-d H:i:s'));
+                $date = new DateTime($date->format('Y-m-d H:i:s'), $timezone);
         }
 
         return $date->setTimezone(new DateTimeZone("UTC"));
