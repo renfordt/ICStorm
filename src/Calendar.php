@@ -2,6 +2,8 @@
 
 namespace renfordt\ICStorm;
 
+use DateTimeZone;
+
 class Calendar
 {
     protected array $events;
@@ -40,18 +42,9 @@ class Calendar
         $ics = "BEGIN:VCALENDAR\r\n";
         $ics .= "VERSION:2.0\r\n";
         $ics .= "PRODID:-//ICStorm//EN\r\n";
+
         foreach ($this->events as $event) {
-            $ics .= "BEGIN:VEVENT\r\n";
-            $ics .= "UID:".uniqid()."\r\n";
-            $ics .= "DTSTAMP:".date('Ymd\THis\Z')."\r\n";
-            $ics .= "DTSTART:".$event->getStartDate()."\r\n";
-            $ics .= "DTEND:".$event->getEndDate()."\r\n";
-            $ics .= "SUMMARY:".$event->getTitle()."\r\n";
-            $ics .= "DESCRIPTION:".$event->getDescription()."\r\n";
-            $ics .= "LOCATION:".$event->getLocation()."\r\n";
-            $ics .= "CLASS:".$event->getClassification()->value."\r\n";
-            $ics .= "TRANSP:".$event->getTransparency()->value."\r\n";
-            $ics .= "END:VEVENT\r\n";
+            $event->generateICS();
         }
         $ics .= "END:VCALENDAR\r\n";
         return $ics;
