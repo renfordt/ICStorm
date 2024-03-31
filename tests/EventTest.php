@@ -315,4 +315,42 @@ class EventTest extends TestCase
         $timezone = 'Invalid Timezone';
         $event->setStartDate($date, $timezone);
     }
+    /**
+     * Test generateICS method
+     */
+    public function testGenerateICS(): void
+    {
+        $event = new Event();
+        $description = "Test event description";
+        $location = "Test location";
+        $startDate = '2022-03-15 09:00:00';
+        $endDate = '2022-03-15 17:00:00';
+        $title = "Test title";
+        $summary = "Test event summary";
+        $classification = EventClassification::public;
+        $transparency = EventTransparency::transparent;
+
+        $event->setDescription($description);
+        $event->setLocation($location);
+        $event->setStartDate($startDate);
+        $event->setEndDate($endDate);
+        $event->setTitle($title);
+        $event->setSummary($summary);
+        $event->setClass($classification);
+        $event->setTransparency($transparency);
+
+        $generatedICS = $event->generateICS();
+
+        $this->assertStringContainsString("BEGIN:VEVENT", $generatedICS);
+        $this->assertStringContainsString("UID:", $generatedICS);
+        $this->assertStringContainsString("DTSTAMP:", $generatedICS);
+        $this->assertStringContainsString("DTSTART:20220315T090000Z", $generatedICS);
+        $this->assertStringContainsString("DTEND:20220315T170000Z", $generatedICS);
+        $this->assertStringContainsString("SUMMARY:Test title", $generatedICS);
+        $this->assertStringContainsString("DESCRIPTION:Test event description", $generatedICS);
+        $this->assertStringContainsString("LOCATION:Test location", $generatedICS);
+        $this->assertStringContainsString("CLASS:PUBLIC", $generatedICS);
+        $this->assertStringContainsString("TRANSP:TRANSPARENT", $generatedICS);
+        $this->assertStringContainsString("END:VEVENT", $generatedICS);
+    }
 }
