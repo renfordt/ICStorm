@@ -45,8 +45,8 @@ class CalendarTest extends TestCase
         $this->assertStringContainsString("SUMMARY:$title", $ics);
         $this->assertStringContainsString("DESCRIPTION:$description", $ics);
         $this->assertStringContainsString("LOCATION:$location", $ics);
-        $this->assertStringContainsString("DTSTART:".$startDateTime->format('Ymd\THis\Z'), $ics);
-        $this->assertStringContainsString("DTEND:".$endDateTime->format('Ymd\THis\Z'), $ics);
+        $this->assertStringContainsString("DTSTART:".$startDateTime->format('Ymd\THis'), $ics);
+        $this->assertStringContainsString("DTEND:".$endDateTime->format('Ymd\THis'), $ics);
         $this->assertStringContainsString("CLASS:".$classification->value, $ics);
         $this->assertStringContainsString("TRANSP:".$transparency->value, $ics);
         $this->assertStringContainsString("END:VEVENT", $ics);
