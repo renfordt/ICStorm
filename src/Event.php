@@ -3,6 +3,7 @@
 namespace renfordt\ICStorm;
 
 use DateTime;
+use DateTimeZone;
 use Exception;
 
 class Event
@@ -114,21 +115,19 @@ class Event
      */
     public function getStartDate(): string
     {
-        return $this->startDate->format('Ymd\THis');
+        return $this->startDate->format('Ymd\THis\Z');
     }
 
     /**
-     * Set the start date.
+     * Sets the start date of the object
      *
-     * @param  DateTime|string  $startDate  The start date as a DateTime object or a string in a format supported by DateTime constructor.
+     * @param  DateTime|string  $startDate  The start date to set
+     * @param  DateTimeZone|string  $timezone  The timezone to set the start date in (default: 'UTC')
      * @return void
      */
-    public function setStartDate(DateTime|string $startDate): void
+    public function setStartDate(DateTime|string $startDate, DateTimeZone|string $timezone = 'UTC'): void
     {
-        if (is_string($startDate)) {
-            $startDate = new DateTime($startDate);
-        }
-        $this->startDate = $startDate;
+        $this->startDate = $this->setDate($startDate, $timezone);
     }
 
     /**
@@ -138,22 +137,19 @@ class Event
      */
     public function getEndDate(): string
     {
-        return $this->endDate->format('Ymd\THis');
+        return $this->endDate->format('Ymd\THis\Z');
     }
 
     /**
-     * Sets the end date.
+     * Sets the end date of the object
      *
-     * @param  DateTime|string  $endDate  The end date to set.
-     *
+     * @param  DateTime|string  $endDate  The end date to set
+     * @param  DateTimeZone|string  $timezone  The timezone for the end date (default: 'UTC')
      * @return void
      */
-    public function setEndDate(DateTime|string $endDate): void
+    public function setEndDate(DateTime|string $endDate, DateTimeZone|string $timezone = 'UTC'): void
     {
-        if (is_string($endDate)) {
-            $endDate = new DateTime($endDate);
-        }
-        $this->endDate = $endDate;
+        $this->endDate = $this->setDate($endDate, $timezone);
     }
 
     /**
@@ -248,5 +244,31 @@ class Event
     public function setTransparency(EventTransparency $transparency): void
     {
         $this->transparency = $transparency;
+    }
+
+    /**
+     * Sets the date and timezone of the object and returns the DateTime object in UTC timezone
+     *
+     * @param  DateTime|string  $date  The date to set (can be a DateTime object or a string representation of a date)
+     * @param  DateTimeZone|string  $timezone  The timezone to set (can be a DateTimeZone object or a string representation of a timezone)
+     * @return DateTime  The DateTime object in UTC timezone
+     */
+    public function setDate(DateTime|string $date, DateTimeZone|string $timezone = 'UTC'): DateTime
+    {
+        if (is_string($timezone)) {
+            try {
+                $timezone = new DateTimeZone($timezone);
+            } catch (Exception $e) {
+            }
+        }
+
+        if (is_string($date)) {
+            try {
+                $date = new DateTime($date, $timezone);
+            } catch (Exception $e) {
+            }
+
+        }
+        return $date->setTimezone(new DateTimeZone("UTC"));
     }
 }

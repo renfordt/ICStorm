@@ -164,7 +164,7 @@ class EventTest extends TestCase
         $event = new Event();
         $startDate = new \DateTime('2022-04-01 12:00:00');
         $event->setStartDate($startDate);
-        $this->assertEquals('20220401T120000', $event->getStartDate());
+        $this->assertEquals('20220401T120000Z', $event->getStartDate());
     }
     /**
      * Test getStartDate method with string
@@ -174,7 +174,7 @@ class EventTest extends TestCase
         $event = new Event();
         $startDate = '2024-03-28 14:23:15';
         $event->setStartDate($startDate);
-        $this->assertEquals('20240328T142315', $event->getStartDate());
+        $this->assertEquals('20240328T142315Z', $event->getStartDate());
     }
     /**
      * Test getEndDate method with DateTime object
@@ -184,7 +184,7 @@ class EventTest extends TestCase
         $event = new Event();
         $endDate = new \DateTime('2022-04-02 18:00:00');
         $event->setEndDate($endDate);
-        $this->assertEquals('20220402T180000', $event->getEndDate());
+        $this->assertEquals('20220402T180000Z', $event->getEndDate());
     }
     /**
      * Test getEndDate method with string
@@ -194,7 +194,7 @@ class EventTest extends TestCase
         $event = new Event();
         $endDate = '2024-03-30 16:23:15';
         $event->setEndDate($endDate);
-        $this->assertEquals('20240330T162315', $event->getEndDate());
+        $this->assertEquals('20240330T162315Z', $event->getEndDate());
     }
 
    /**
@@ -217,8 +217,8 @@ class EventTest extends TestCase
 
        $this->assertEquals($details['description'], $event->getDescription());
        $this->assertEquals($details['location'], $event->getLocation());
-       $this->assertEquals('20220101T000000', $event->getStartDate());
-       $this->assertEquals('20220101T120000', $event->getEndDate());
+       $this->assertEquals('20220101T000000Z', $event->getStartDate());
+       $this->assertEquals('20220101T120000Z', $event->getEndDate());
        $this->assertEquals($details['title'], $event->getTitle());
        $this->assertEquals($details['summary'], $event->getSummary());
        $this->assertEquals($details['class'], $event->getClassification());
