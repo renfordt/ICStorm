@@ -252,22 +252,16 @@ class Event
      * @param  DateTime|string  $date  The date to set (can be a DateTime object or a string representation of a date)
      * @param  DateTimeZone|string  $timezone  The timezone to set (can be a DateTimeZone object or a string representation of a timezone)
      * @return DateTime  The DateTime object in UTC timezone
+     * @throws Exception
      */
-    public function setDate(DateTime|string $date, DateTimeZone|string $timezone = 'UTC'): DateTime
+    protected function setDate(DateTime|string $date, DateTimeZone|string $timezone = 'UTC'): DateTime
     {
         if (is_string($timezone)) {
-            try {
-                $timezone = new DateTimeZone($timezone);
-            } catch (Exception $e) {
-            }
+            $timezone = new DateTimeZone($timezone);
         }
 
         if (is_string($date)) {
-            try {
-                $date = new DateTime($date, $timezone);
-            } catch (Exception $e) {
-            }
-
+            $date = new DateTime($date, $timezone);
         }
         return $date->setTimezone(new DateTimeZone("UTC"));
     }

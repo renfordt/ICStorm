@@ -2,9 +2,11 @@
 
 namespace renfordt\ICStorm;
 
+use Error;
 use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 /**
  * Class EventTest
@@ -259,7 +261,7 @@ class EventTest extends TestCase
         $event->setStartDate($date, $timezone);
         $expectedDate = new \DateTime('2022-04-01 12:00:00', new \DateTimeZone(($timezone)));
         $expectedDate->setTimezone(new \DateTimeZone('UTC'));
-        $this->assertEquals($expectedDate, $event->getStartDate());
+        $this->assertEquals($expectedDate->format('Ymd\THis\Z'), $event->getStartDate());
     }
 
     /**
@@ -273,7 +275,7 @@ class EventTest extends TestCase
         $event->setStartDate($date, $timezone);
         $expectedDate = new \DateTime($date, new \DateTimeZone($timezone));
         $expectedDate->setTimezone(new \DateTimeZone('UTC'));
-        $this->assertEquals($expectedDate, $event->getStartDate());
+        $this->assertEquals($expectedDate->format('Ymd\THis\Z'), $event->getStartDate());
     }
 
     /**
@@ -287,7 +289,7 @@ class EventTest extends TestCase
         $event->setStartDate($date, $timezone);
         $expectedDate = new \DateTime('2022-04-01 12:00:00', $timezone);
         $expectedDate->setTimezone(new \DateTimeZone('UTC'));
-        $this->assertEquals($expectedDate, $event->getStartDate());
+        $this->assertEquals($expectedDate->format('Ymd\THis\Z'), $event->getStartDate());
     }
 
     /**
