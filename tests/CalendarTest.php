@@ -18,8 +18,8 @@ class CalendarTest extends TestCase
         $description = 'This is a test event';
         $startDate = '2024-10-15 18:15:00';
         $endDate = '2024-10-15 18:45:00';
-        $classification = EventClassification::private;
-        $transparency = EventTransparency::opaque;
+        $classification = EventClassificationEnum::private;
+        $transparency = EventTransparencyEnum::opaque;
         $location = 'Test Location';
 
         $event = Event::createEvent(
@@ -58,8 +58,8 @@ class CalendarTest extends TestCase
         $description = 'This is a test event';
         $startDate = '2024-03-28 22:00:00';
         $endDate = '2024-03-28 23:00:00';
-        $classification = EventClassification::private;
-        $transparency = EventTransparency::opaque;
+        $classification = EventClassificationEnum::private;
+        $transparency = EventTransparencyEnum::opaque;
         $location = 'Test Location in a different country';
         $filename = 'test_calendar.ics';
 

@@ -14,8 +14,8 @@ class Event
     private DateTime $endDate;
     private string $title;
     private string $summary;
-    private EventClassification $class = EventClassification::private;
-    private EventTransparency $transparency = EventTransparency::opaque;
+    private EventClassificationEnum $class = EventClassificationEnum::private;
+    private EventTransparencyEnum $transparency = EventTransparencyEnum::opaque;
     private string $conference;
 
     /**
@@ -83,10 +83,10 @@ class Event
     /**
      * Sets the event classification for the object
      *
-     * @param  EventClassification  $class  The event classification to set
+     * @param  EventClassificationEnum  $class  The event classification to set
      * @return void
      */
-    public function setClass(EventClassification $class): void
+    public function setClass(EventClassificationEnum $class): void
     {
         $this->class = $class;
     }
@@ -218,9 +218,9 @@ class Event
     /**
      * Get the classification of the event.
      *
-     * @return EventClassification Returns the EventClassification object representing the classification of the event.
+     * @return EventClassificationEnum Returns the EventClassification object representing the classification of the event.
      */
-    public function getClassification(): EventClassification
+    public function getClassification(): EventClassificationEnum
     {
         return $this->class;
     }
@@ -228,9 +228,9 @@ class Event
     /**
      * Returns the transparency of the event
      *
-     * @return EventTransparency  The transparency of the event
+     * @return EventTransparencyEnum  The transparency of the event
      */
-    public function getTransparency(): EventTransparency
+    public function getTransparency(): EventTransparencyEnum
     {
         return $this->transparency;
     }
@@ -238,10 +238,10 @@ class Event
     /**
      * Sets the transparency of the event
      *
-     * @param  EventTransparency  $transparency  The transparency to set
+     * @param  EventTransparencyEnum  $transparency  The transparency to set
      * @return void
      */
-    public function setTransparency(EventTransparency $transparency): void
+    public function setTransparency(EventTransparencyEnum $transparency): void
     {
         $this->transparency = $transparency;
     }

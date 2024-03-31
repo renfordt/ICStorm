@@ -2,7 +2,7 @@
 
 namespace renfordt\ICStorm;
 
-enum EventTransparency: string
+enum EventTransparencyEnum: string
 {
     case transparent = 'TRANSPARENT';
     case opaque = 'OPAQUE';

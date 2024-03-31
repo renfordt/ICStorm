@@ -111,7 +111,7 @@ class EventTest extends TestCase
     public function testGetClassificationDefault(): void
     {
         $event = new Event();
-        $classification = EventClassification::private;
+        $classification = EventClassificationEnum::private;
         $this->assertEquals($classification, $event->getClassification());
     }
 
@@ -121,7 +121,7 @@ class EventTest extends TestCase
     public function testGetClassificationPublic(): void
     {
         $event = new Event();
-        $classification = EventClassification::public;
+        $classification = EventClassificationEnum::public;
         $event->setClass($classification);
         $this->assertEquals($classification, $event->getClassification());
     }
@@ -132,7 +132,7 @@ class EventTest extends TestCase
     public function testGetClassificationConfidential(): void
     {
         $event = new Event();
-        $classification = EventClassification::confidential;
+        $classification = EventClassificationEnum::confidential;
         $event->setClass($classification);
         $this->assertEquals($classification, $event->getClassification());
     }
@@ -143,7 +143,7 @@ class EventTest extends TestCase
     public function testGetTransparencyDefault(): void
     {
         $event = new Event();
-        $transparency = EventTransparency::opaque;
+        $transparency = EventTransparencyEnum::opaque;
         $this->assertEquals($transparency, $event->getTransparency());
     }
 
@@ -153,7 +153,7 @@ class EventTest extends TestCase
     public function testGetTransparencyTransparent(): void
     {
         $event = new Event();
-        $transparency = EventTransparency::transparent;
+        $transparency = EventTransparencyEnum::transparent;
         $event->setTransparency($transparency);
         $this->assertEquals($transparency, $event->getTransparency());
     }
@@ -214,8 +214,8 @@ class EventTest extends TestCase
             'endDate' => '2022-01-01 12:00:00',
             'title' => 'Event Title',
             'summary' => 'Event Summary',
-            'class' => EventClassification::public,
-            'transparency' => EventTransparency::transparent
+            'class' => EventClassificationEnum::public,
+            'transparency' => EventTransparencyEnum::transparent
         ];
 
         $event = Event::createEvent($details);
@@ -243,8 +243,8 @@ class EventTest extends TestCase
             'location' => 'Event Location',
             'title' => 'Event Title',
             'summary' => 'Event Summary',
-            'class' => EventClassification::public,
-            'transparency' => EventTransparency::transparent
+            'class' => EventClassificationEnum::public,
+            'transparency' => EventTransparencyEnum::transparent
         ];
 
         Event::createEvent($details);
@@ -327,8 +327,8 @@ class EventTest extends TestCase
         $endDate = '2022-03-15 17:00:00';
         $title = "Test title";
         $summary = "Test event summary";
-        $classification = EventClassification::public;
-        $transparency = EventTransparency::transparent;
+        $classification = EventClassificationEnum::public;
+        $transparency = EventTransparencyEnum::transparent;
 
         $event->setDescription($description);
         $event->setLocation($location);
