@@ -218,7 +218,7 @@ class EventTest extends TestCase
             'transparency' => EventTransparencyEnum::transparent
         ];
 
-        $event = Event::createEvent($details);
+        $event = Event::create($details);
 
         $this->assertEquals($details['description'], $event->getDescription());
         $this->assertEquals($details['location'], $event->getLocation());
@@ -247,7 +247,7 @@ class EventTest extends TestCase
             'transparency' => EventTransparencyEnum::transparent
         ];
 
-        Event::createEvent($details);
+        Event::create($details);
     }
 
     /**

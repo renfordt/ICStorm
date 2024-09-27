@@ -22,7 +22,7 @@ class CalendarTest extends TestCase
         $transparency = EventTransparencyEnum::opaque;
         $location = 'Test Location';
 
-        $event = Event::createEvent(
+        $event = Event::create(
             compact('title',
                 'summary',
                 'description',
@@ -63,7 +63,7 @@ class CalendarTest extends TestCase
         $location = 'Test Location in a different country';
         $filename = 'test_calendar.ics';
 
-        $event = Event::createEvent(
+        $event = Event::create(
             compact('title',
                 'summary',
                 'description',

@@ -25,7 +25,7 @@ class Event
      * @return Event The created Event object.
      * @throws Exception If the 'startDate' or 'endDate' is not provided in the details array.
      */
-    public static function createEvent(array $details): Event
+    public static function create(array $details): Event
     {
         if (!isset($details['startDate']) || !isset($details['endDate'])) {
             throw new Exception('startDate and endDate are required.');
