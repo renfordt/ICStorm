@@ -54,7 +54,7 @@ $classification = EventClassification::private;
 $transparency = EventTransparency::opaque;
 $location = 'Test Location';
 
-$event = Event::createEvent(
+$event = Event::create(
     compact('title',
         'summary',
         'description',
