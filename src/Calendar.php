@@ -39,6 +39,10 @@ class Calendar
      */
     public function generateICS(): string
     {
+        if (!isset($this->events)) {
+            return '';
+        }
+
         $ics = "BEGIN:VCALENDAR\r\n";
         $ics .= "VERSION:2.0\r\n";
         $ics .= "PRODID:-//ICStorm//EN\r\n";
